@@ -1,0 +1,25 @@
+{
+  "name": "@quantumai-blockchain/qbc-blog",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Content repository for qbc.network/blog. Markdown posts with strict frontmatter.",
+  "license": "(MIT AND CC-BY-4.0)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuantumAI-Blockchain/qbc-blog.git"
+  },
+  "homepage": "https://qbc.network/blog",
+  "scripts": {
+    "validate": "tsx scripts/validate.ts",
+    "build-index": "tsx scripts/build-index.ts",
+    "prepublish": "pnpm validate && pnpm build-index"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "gray-matter": "^4.0.3",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0",
+    "zod": "^3.23.0"
+  },
+  "packageManager": "pnpm@10.0.0"
+}

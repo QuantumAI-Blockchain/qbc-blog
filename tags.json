@@ -1,0 +1,18 @@
+{
+    "$schema": "./tags.schema.json",
+    "tags": {
+        "engineering": "Day-to-day shipping notes",
+        "consensus": "Substrate consensus + runtime upgrades",
+        "phase-2": "Phase 2 permissionless contract stack (chain 3303)",
+        "phase-3": "Phase 3 substrate pallets (staking / election / offences / qvm-committee)",
+        "phase-4": "Phase 4 cutover (governor handover, EOA burn)",
+        "aether": "Aether Mind v6 + training pipeline",
+        "bridge": "Cross-chain bridge work (FROST committee, light client)",
+        "security": "Security posture, audits, incident postmortems",
+        "ops": "Operational reports + incident docs",
+        "release": "Model + contract + runtime releases",
+        "physics": "Physics / formal-spec notes (PoVE, MSAII, PSLRS)",
+        "frontend": "Frontend production engineering",
+        "governance": "Permissionless governance design + execution"
+    }
+}
