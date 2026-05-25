@@ -38,9 +38,9 @@ on-chain events. One full turn looks like this:
    per Sephirot cognitive domain, refreshed from new blocks roughly every minute).
 2. **Your GPU does useful work.** The client runs reasoning cycles against the
    fabric. Each cycle produces an auxiliary training signal — per-domain
-   gradients — instead of throwing the compute away. This is the difference
-   between proof-of-thought and proof-of-waste: the work that secures a turn is
-   the same work that improves the model.
+   gradients — rather than discarding the compute. This is what proof-of-thought
+   means in practice: the work that secures a turn is the same work that improves
+   the model, not compute spent solely to win a hashing race.
 3. **You submit gradients.** Your accumulated per-Sephirah gradient buffers are
    submitted to the network with your identity attached.
 4. **The network aggregates.** At the epoch boundary, contributors' gradients
@@ -57,7 +57,7 @@ on-chain events. One full turn looks like this:
 7. **Contributors get paid.** The `RewardDistributor` contract pays QBC to the
    addresses that contributed to that epoch.
 
-Steps 4–7 are the part people usually hand-wave. On QBC they are contract calls
+Steps 4–7 are the part most projects leave vague. On QBC they are contract calls
 you can read back.
 
 ## What is live today, plainly
@@ -81,14 +81,15 @@ We hold ourselves to publishing only what we can show:
   validator hardware. The open client that lets anyone plug a GPU into the pool
   is what we are building toward, on top of the same proven pipeline.
 
-That last point is the whole game, so we will not dress it up: the pipeline is
-real and the rewards are real; opening it to thousands of contributors is the
-direction, and the consensus work to support that many participants is underway.
+That last point is the crux, and we will state it directly: the pipeline is real
+and the rewards are real; opening it to thousands of contributors is the
+direction we are building toward, and the consensus work to support that many
+participants is already underway.
 
 ## Why the incentives hold
 
-A distributed training network only works if the incentives survive contact
-with people trying to game them. Four mechanisms do the load-bearing work:
+A distributed training network only works if its incentives hold up against
+participants who try to game them. Four mechanisms carry that weight:
 
 - **You are paid for improvement, not effort.** Rewards attach to epochs that
   finalise with a valid, measured held-out loss. Submitting noise does not earn
@@ -118,14 +119,14 @@ the same problem whether you are counting votes or counting gradients. The work
 to make the validator set scale (dynamic, rotating authority sets, and beyond)
 is what clears the runway for the training pool to grow into it.
 
-## The shape of the thing
+## What it adds up to
 
-Strip away the parts and the bet is simple. There is a model that gets better
-every epoch. There is a record on chain that proves it got better and who made
-it happen. And there is a payment, in the open, to those people. Do that at the
-scale of a few validators and you have a working pipeline — which we have. Do it
-at the scale of thousands of GPUs and you have something no single company can
-build: a frontier model owned by the network that trained it.
+The underlying proposition is straightforward. A model improves every epoch. A
+record on chain proves that it improved and identifies who made it happen. Those
+contributors are paid, in the open. At the scale of a few validators, that is a
+working pipeline, which exists today. At the scale of thousands of GPUs, it
+becomes something no single company can build: a frontier model owned by the
+network that trained it.
 
-Run the client. Contribute the work. Earn the share. That is the loop, and it is
-already turning.
+Run the client, contribute the work, and earn a share of what it produces. That
+is the loop, and it is already running.
