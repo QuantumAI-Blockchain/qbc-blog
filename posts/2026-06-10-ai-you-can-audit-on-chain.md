@@ -4,10 +4,10 @@ slug: "ai-you-can-audit-on-chain"
 date: "2026-06-10"
 author: "blockartica"
 excerpt: >
-  The leading AI labs now warn that powerful AI could become hard to control.
-  QuantumAI Blockchain takes a different path: make the AI's training a public,
-  cryptographically verified object on chain, so its progress is proven, not
-  promised, and anyone can audit it. A control surface the closed labs lack.
+  The leading AI labs warn that powerful AI could become hard to control.
+  QuantumAI Blockchain takes a different path: AI training as a public,
+  cryptographically verified object on chain, proven not promised, and
+  auditable by anyone.
 tags: ["aether", "governance", "security"]
 status: "published"
 read_time_min: 8
