@@ -5,9 +5,9 @@ date: "2026-05-26"
 author: "blockartica"
 excerpt: >
   Frontier models are trained by a handful of companies on hardware nobody
-  else can touch. QuantumAI Blockchain turns that around: run the client,
-  contribute your GPU, and every training epoch that improves the model pays
-  out in QBC. Here is exactly how the loop works and why the incentives hold.
+  else can touch. QBC turns that around: run the client, contribute your
+  GPU, and every epoch that improves the model pays out in QBC. How the
+  loop works and why the incentives hold.
 tags: ["aether", "training", "incentives"]
 status: "published"
 read_time_min: 7

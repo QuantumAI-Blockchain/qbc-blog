@@ -13,6 +13,9 @@
         "release": "Model + contract + runtime releases",
         "physics": "Physics / formal-spec notes (PoVE, MSAII, PSLRS)",
         "frontend": "Frontend production engineering",
-        "governance": "Permissionless governance design + execution"
+        "governance": "Permissionless governance design + execution",
+        "distributed-fabric": "Distributed knowledge fabric (content-addressed ids, per-domain roots, cross-node search)",
+        "training": "Model training runs + pipelines",
+        "incentives": "Token incentives + reward economics"
     }
 }

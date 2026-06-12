@@ -6,8 +6,8 @@ author: "blockartica"
 excerpt: >
   v7.0 drops the custom v6 architecture and rebuilds on Qwen2.5-7B with a
   QLoRA fine-tune on the Aether corpus. It holds general capability (MMLU
-  69.9, GSM8K up 3.6 points) while cutting Aether-domain perplexity 44%.
-  Every number is from lm-evaluation-harness and reproducible from the model card.
+  69.9, GSM8K up 3.6) while cutting Aether-domain perplexity 44%. Every
+  number is reproducible from the model card.
 tags: ["aether", "release", "engineering"]
 status: "published"
 read_time_min: 6

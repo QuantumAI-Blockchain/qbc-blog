@@ -5,10 +5,9 @@ date: "2026-06-12"
 author: "blockartica"
 excerpt: >
   Aether's knowledge fabric just answered its first search across two
-  machines: a query on one box returned content that only existed on the
-  other, carried over libp2p, deduplicated by content-addressed id. 14 of 14
-  harness checks passed, locally and over the real network. Here is what was
-  built, what was proven, and what is honestly still missing.
+  machines: content that existed only on the other box, carried over
+  libp2p, deduplicated by content-addressed id. 14/14 harness checks
+  passed. What was built, what was proven, what is still missing.
 tags: ["engineering", "aether", "distributed-fabric"]
 status: "published"
 read_time_min: 7
