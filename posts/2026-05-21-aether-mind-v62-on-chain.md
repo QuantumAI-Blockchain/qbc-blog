@@ -35,7 +35,7 @@ struct Epoch {
 }
 ```
 
-That last field is what makes this different from every other "AI x crypto" project. The chain doesn't claim to host the model; it claims — and proves — that **this specific epoch produced this specific model with this specific held-out loss**. The model lives on Hugging Face. The chain records the bytes it was supposed to be.
+That last field is what makes this different from every other "AI x crypto" project. The chain doesn't claim to host the model; it claims, and proves, that **this specific epoch produced this specific model with this specific held-out loss**. The model lives on Hugging Face. The chain records the bytes it was supposed to be.
 
 ## What v6.2 actually is
 
@@ -43,7 +43,7 @@ That last field is what makes this different from every other "AI x crypto" proj
 
 Held-out mean cross-entropy: **8.43 nats/token** at ctx=256.
 
-If you know what nats/tok means: yes, this is a Phase-1 pipeline-bootstrap release, not a frontier model. Qwen2.5-0.5B-Instruct (the teacher) is at ~2.3 nats/tok on standard corpora; 8.43 is closer to uniform-over-vocab than to GPT-2-small. The honest reading is: **we shipped the pipeline, not the model**. The v6 architecture's 22K new random-init parameters (Sephirot gates, NSA branch gates) intentionally put the student off the teacher's manifold so the gates can learn meaningful routing — and 30K steps × ctx=256 × batch=1 BF16 on a single 3080 Ti is a "does it run end-to-end" budget, not a quality budget.
+If you know what nats/tok means: yes, this is a Phase-1 pipeline-bootstrap release, not a frontier model. Qwen2.5-0.5B-Instruct (the teacher) is at ~2.3 nats/tok on standard corpora; 8.43 is closer to uniform-over-vocab than to GPT-2-small. The honest reading is: **we shipped the pipeline, not the model**. The v6 architecture's 22K new random-init parameters (Sephirot gates, NSA branch gates) intentionally put the student off the teacher's manifold so the gates can learn meaningful routing, and 30K steps × ctx=256 × batch=1 BF16 on a single 3080 Ti is a "does it run end-to-end" budget, not a quality budget.
 
 What v6.2 demonstrates is **the pipeline works**: deterministic Hamiltonian → SHA-256 of safetensors → on-chain pin → held-out eval → on-chain loss. Three checkpoints (v6.0, v6.1, v6.2) are pinned this way. The 7B-scale run on rented A100s is the quality target; the pipeline is the prerequisite.
 
@@ -53,7 +53,7 @@ The off-chain aether-mind binary runs a continuous reasoning-cycle pump:
 
 1. Knowledge Fabric (HNSW + RocksDB, ~190K live 896-d vectors) ingests new blocks every 60s.
 2. Per-Sephirah gradient buffers accumulate from inference-time aux loss.
-3. At epoch boundary, stake-weighted FedAvg over submitter gradients (the live aggregation today is uniform per-submitter — moving to coordinate-wise trimmed-mean + Krum is on the roadmap; see [`docs/MSAII_SPEC.md`](https://github.com/QuantumAI-Blockchain/qubitcoin-node/blob/main/docs/MSAII_SPEC.md)).
+3. At epoch boundary, stake-weighted FedAvg over submitter gradients (the live aggregation today is uniform per-submitter, moving to coordinate-wise trimmed-mean + Krum is on the roadmap; see [`docs/MSAII_SPEC.md`](https://github.com/QuantumAI-Blockchain/qubitcoin-node/blob/main/docs/MSAII_SPEC.md)).
 4. Optimizer step applies the aggregate to the V6 student weights in place.
 5. New checkpoint written to `step_<N>.safetensors`; SHA-256 computed.
 6. Held-out CE evaluated.
@@ -94,8 +94,8 @@ Full runbook: [`docs/REPRODUCIBILITY.md`](https://github.com/QuantumAI-Blockchai
 
 ## What this isn't
 
-This isn't AGSI. It isn't a consciousness measurement. It isn't a SUSY computation. The MSAII number we surface at `/aether/msaii` is an attention-pattern interpretability statistic — it's useful as a diagnostic, it's not evidence of cognition. The physics renames in the latest whitepaper revision (PoVE / MSAII / PSLRS — see [`docs/PERMISSIONLESS_RESOLUTION_2026-05-21.md`](https://github.com/QuantumAI-Blockchain/qubitcoin-node/blob/main/docs/PERMISSIONLESS_RESOLUTION_2026-05-21.md) §6) are about being honest with the audiences that actually understand the underlying math.
+This isn't AGSI. It isn't a consciousness measurement. It isn't a SUSY computation. The MSAII number we surface at `/aether/msaii` is an attention-pattern interpretability statistic, it's useful as a diagnostic, it's not evidence of cognition. The physics renames in the latest whitepaper revision (PoVE / MSAII / PSLRS, see [`docs/PERMISSIONLESS_RESOLUTION_2026-05-21.md`](https://github.com/QuantumAI-Blockchain/qubitcoin-node/blob/main/docs/PERMISSIONLESS_RESOLUTION_2026-05-21.md) §6) are about being honest with the audiences that actually understand the underlying math.
 
 What this **is**: the first chain where you can verify, byte-for-byte, that a published model came from the training run the chain says it did. That's a real primitive. Everything else builds on it.
 
-— BlockArtica
+,  BlockArtica

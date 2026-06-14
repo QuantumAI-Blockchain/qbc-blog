@@ -167,4 +167,4 @@ The BABE engine swap stays open as v122 or later if and when there's a real reas
 
 A bigger public-facing announcement comes after GRANDPA hardening and the host stability fixes land. The chain is now genuinely more permissionless than yesterday; calling it that to a wider audience needs the supporting infrastructure to be boring rather than fragile.
 
-— BlockArtica
+,  BlockArtica

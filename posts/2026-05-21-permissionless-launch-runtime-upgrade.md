@@ -1,12 +1,12 @@
 ---
-title: "Permissionless launch — runtime upgrade landed in one block"
+title: "Permissionless launch, runtime upgrade landed in one block"
 slug: "permissionless-launch-runtime-upgrade"
 date: "2026-05-21"
 author: "blockartica"
 excerpt: >
   Substrate runtime v120 finalised on chain 3303 at block 0x2263d190…794f35.
   Four new permissionless pallets are now queryable on the live mainnet
-  alongside the existing consensus path — anyone can bond and validate.
+  alongside the existing consensus path, anyone can bond and validate.
 tags: ["engineering", "consensus", "phase-3", "release"]
 status: "published"
 read_time_min: 4
@@ -21,12 +21,12 @@ The WASM artifact is bit-identical to what `cargo build --release -p qbc-runtime
 
 Four new permissionless pallets are in `construct_runtime!` at indices 17–20:
 
-- **`pallet-qbc-staking`** — anyone can `bond_stake` with ≥ 100 QBC and `validate` (with ≥ 10 000 QBC) or `nominate` up to 16 candidates. Unbonding takes 28 eras (7 days). Bonded stake remains slashable through the full window so a validator can't rage-quit on the way to an offence.
-- **`pallet-qbc-election`** — `submit_elected_set` rejects authority sets smaller than `MinAuthoritySetSize = 10`. This is the safety floor that gates the eventual Aura → BABE swap.
-- **`pallet-qbc-offences`** — `report_offence` accepts cryptographic equivocation proofs and unresponsiveness reports from any address. Routing into stake-side slashing wires in at the next hardfork.
-- **`pallet-qbc-qvm-committee`** — `submit_state_root_signed` / `dispute_state_root` / `confirm_pending` callable now. Scaffold-ready to replace the Charlie-only QVM bridge path with a 2/3 committee + 55-min dispute window.
+- **`pallet-qbc-staking`**, anyone can `bond_stake` with ≥ 100 QBC and `validate` (with ≥ 10 000 QBC) or `nominate` up to 16 candidates. Unbonding takes 28 eras (7 days). Bonded stake remains slashable through the full window so a validator can't rage-quit on the way to an offence.
+- **`pallet-qbc-election`**, `submit_elected_set` rejects authority sets smaller than `MinAuthoritySetSize = 10`. This is the safety floor that gates the eventual Aura → BABE swap.
+- **`pallet-qbc-offences`**, `report_offence` accepts cryptographic equivocation proofs and unresponsiveness reports from any address. Routing into stake-side slashing wires in at the next hardfork.
+- **`pallet-qbc-qvm-committee`**, `submit_state_root_signed` / `dispute_state_root` / `confirm_pending` callable now. Scaffold-ready to replace the Charlie-only QVM bridge path with a 2/3 committee + 55-min dispute window.
 
-**Aura keeps authoring.** The new pallets sit alongside existing consensus and accept permissionless writes without disturbing block production. The next sequential step is candidate onboarding — once ≥ 10 distinct accounts bond and `validate`, the `spec_version 120 → 121` Aura → BABE hardfork becomes operationally safe.
+**Aura keeps authoring.** The new pallets sit alongside existing consensus and accept permissionless writes without disturbing block production. The next sequential step is candidate onboarding, once ≥ 10 distinct accounts bond and `validate`, the `spec_version 120 → 121` Aura → BABE hardfork becomes operationally safe.
 
 ## Why this matters
 
@@ -51,19 +51,19 @@ curl -s -X POST -H "Content-Type: application/json" \
      http://localhost:9944 | jq .result.number
 ```
 
-The submitter script — re-usable for future upgrades — is committed at
+The submitter script, re-usable for future upgrades, is committed at
 [`scripts/ops/submit_runtime_upgrade.mjs`](https://github.com/QuantumAI-Blockchain/qubitcoin-node/blob/main/scripts/ops/submit_runtime_upgrade.mjs).
 
 ## What's next
 
 Three sequential gates to a full permissionless L1:
 
-1. **Bond ≥ 10 distinct candidates** via `qbcStaking.bondStake`. Blocking on third-validator infra capacity — once a non-residential host is provisioned, candidate onboarding moves quickly.
+1. **Bond ≥ 10 distinct candidates** via `qbcStaking.bondStake`. Blocking on third-validator infra capacity, once a non-residential host is provisioned, candidate onboarding moves quickly.
 2. **Aura → BABE hardfork** (`spec_version 120 → 121`). High-risk; this is the consensus swap. Requires all 3+ validators to have BABE session keys imported and the elected set to be ≥ 10.
 3. **Universal-EOA burn.** Runbook in [`docs/EOA_BURN_RUNBOOK.md`](https://github.com/QuantumAI-Blockchain/qubitcoin-node/blob/main/docs/EOA_BURN_RUNBOOK.md). Executes only after every role rotation is on-chain-verified.
 
 In parallel: the FROST DKG ceremony for BridgeVaultV2 (cryptographer track) and the v6.x → v7 model distillation on rented A100s (research track).
 
-The chain's still 3-validator with single Aura authoring under the hood today. But the door is open — anyone can walk through.
+The chain's still 3-validator with single Aura authoring under the hood today. But the door is open, anyone can walk through.
 
-— BlockArtica
+,  BlockArtica

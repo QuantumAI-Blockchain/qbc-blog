@@ -15,7 +15,7 @@ read_time_min: 7
 
 Training a large model is, today, a private act. A few companies own the
 clusters, the data, and the weights. Everyone else gets an API key. The compute
-is real and it is enormous — and almost all of it sits behind one door.
+is real and it is enormous, and almost all of it sits behind one door.
 
 QuantumAI Blockchain is built on a different bet: that the same work can be
 **distributed across thousands of ordinary machines and paid for in the open**.
@@ -30,15 +30,15 @@ as the network grows.
 
 ## The loop, step by step
 
-The training loop is not a metaphor for the chain — it *is* a sequence of
+The training loop is not a metaphor for the chain, it *is* a sequence of
 on-chain events. One full turn looks like this:
 
 1. **You run the client.** It joins the network and pulls the current model
    checkpoint and the live Knowledge Fabric (a sharded vector store, one shard
    per Sephirot cognitive domain, refreshed from new blocks roughly every minute).
 2. **Your GPU does useful work.** The client runs reasoning cycles against the
-   fabric. Each cycle produces an auxiliary training signal — per-domain
-   gradients — rather than discarding the compute. This is what proof-of-thought
+   fabric. Each cycle produces an auxiliary training signal, per-domain
+   gradients, rather than discarding the compute. This is what proof-of-thought
    means in practice: the work that secures a turn is the same work that improves
    the model, not compute spent solely to win a hashing race.
 3. **You submit gradients.** Your accumulated per-Sephirah gradient buffers are
@@ -48,7 +48,7 @@ on-chain events. One full turn looks like this:
    which is applied to the model in place. A new checkpoint is written and its
    SHA-256 is computed.
 5. **The result is measured.** The new checkpoint is evaluated on a held-out
-   set. The cross-entropy is recorded — the chain does not take "it got better"
+   set. The cross-entropy is recorded, the chain does not take "it got better"
    on faith.
 6. **The epoch is finalised on chain.** An `AetherEpoch` record stores the
    weight Merkle root, the aggregate gradient hash, which domains contributed,
@@ -71,11 +71,11 @@ We hold ourselves to publishing only what we can show:
   epoch and is a governance parameter, not a constant baked into the code.
 - **Epoch finalisation is permissionless.** Finalising an epoch, pinning a
   checkpoint, and recording its loss require a two-thirds quorum of bonded
-  attester stake, a commit-reveal on the loss value, and a dispute window — not
+  attester stake, a commit-reveal on the loss value, and a dispute window, not
   one privileged key.
 - **The aggregation is honest about its stage.** Today the federated average is
-  uniform per submitter. Robust aggregation — coordinate-wise trimmed mean plus
-  Krum to reject poisoned or free-riding gradients — is specified and is the
+  uniform per submitter. Robust aggregation, coordinate-wise trimmed mean plus
+  Krum to reject poisoned or free-riding gradients, is specified and is the
   next step, not a finished claim.
 - **It runs on a small set today.** The continuous loop runs on the current
   validator hardware. The open client that lets anyone plug a GPU into the pool
@@ -99,7 +99,7 @@ participants who try to game them. Four mechanisms carry that weight:
   people steering the model are the people with something to lose.
 - **The work is the security.** Block production already runs on VQE
   proof-of-thought. The compute that defends the chain and the compute that
-  trains the model are the same compute — so honest participation is the
+  trains the model are the same compute, so honest participation is the
   cheapest strategy, not an altruistic one.
 - **Everything is checkable.** Every epoch's contributor set, gradient hash,
   checkpoint hash, and loss are on chain. Rewards are a contract call against
@@ -110,7 +110,7 @@ participants who try to game them. Four mechanisms carry that weight:
 A single company scales training by buying more of one kind of hardware in one
 place. A network scales by lowering the cost of joining to near zero. Every new
 machine adds compute *and* knowledge *and* a stakeholder. The marginal
-contributor does not need permission, a contract, or a data-centre — just the
+contributor does not need permission, a contract, or a data-centre, just the
 client and a GPU.
 
 That is also why the consensus roadmap matters to training, not just to

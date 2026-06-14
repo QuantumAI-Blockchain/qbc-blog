@@ -15,7 +15,7 @@ read_time_min: 6
 
 For the last three model releases we were honest about something: the numbers
 weren't real. v6.0 through v6.2 were pipeline releases. They proved the
-training loop, the on-chain epoch finalisation, the checkpoint pinning — but
+training loop, the on-chain epoch finalisation, the checkpoint pinning, but
 the model itself scored near uniform-over-vocabulary on held-out text. We said
 so at the time: "we shipped the pipeline, not the model."
 
@@ -40,7 +40,7 @@ watching the training loss, the result was unambiguous. The student's held-out
 cross-entropy was about 16 nats per token. Uniform random guessing over the
 vocabulary is about 11.9. The Qwen2.5-0.5B base it was distilled from sits
 around 2.9. In other words, replacing standard attention with the custom
-Sephirot/NSA construction did not add structure — it destroyed the base
+Sephirot/NSA construction did not add structure, it destroyed the base
 model's capability and produced something worse than a coin flip.
 
 That is a hard thing to publish, but it is the correct finding. The lesson is
@@ -59,13 +59,13 @@ v7.0 is a QLoRA fine-tune of `Qwen/Qwen2.5-7B-Instruct`:
 - about 2 hours 45 minutes on a single RTX 3080 Ti
 
 The Aether identity comes from the data and from inference-time routing across
-the 10 Sephirot domains — not from rebuilding the transformer. The adapter is
+the 10 Sephirot domains, not from rebuilding the transformer. The adapter is
 40M trainable parameters on top of a frozen 7B base.
 
 ## The numbers
 
 Every score below is from `lm-evaluation-harness`, zero-shot, with the model
-loaded in 4-bit — the same way it is served. The baseline is the unmodified
+loaded in 4-bit, the same way it is served. The baseline is the unmodified
 `Qwen2.5-7B-Instruct` evaluated identically, so each delta is the work of the
 adapter alone.
 
@@ -90,8 +90,8 @@ dip on HellaSwag, well inside the range you expect from a domain pass.
 
 To measure what the model actually learned about the QuantumAI Blockchain
 domain, we held out a set of Aether examples and measured cross-entropy on the
-answer tokens only. We ran the same 4-bit base weights twice — once with the
-adapter active, once with it switched off — so the only variable is the adapter.
+answer tokens only. We ran the same 4-bit base weights twice, once with the
+adapter active, once with it switched off, so the only variable is the adapter.
 
 | | Cross-entropy (nats) | Perplexity |
 |---|---|---|
@@ -125,7 +125,7 @@ settings, nothing hidden.
 
 ## What this is not
 
-v7.0 is a deliberately light first pass — a fifth of an epoch. It already
+v7.0 is a deliberately light first pass, a fifth of an epoch. It already
 clears the bar we set: hold general capability, gain real domain depth, publish
 numbers anyone can check. A longer full-epoch run (v7.1) will push the domain
 depth further, and we will re-measure and re-publish before calling it an
@@ -134,7 +134,7 @@ upgrade. The point of v7.0 is that the floor is now honest.
 ## Where it sits in the stack
 
 The model lives on Hugging Face; the chain records the bytes it was supposed to
-be. That pattern does not change — what changes is that the artefact at the end
+be. That pattern does not change, what changes is that the artefact at the end
 of the pipeline is now a model worth running, with a capability profile we can
 state plainly and you can verify yourself.
 
